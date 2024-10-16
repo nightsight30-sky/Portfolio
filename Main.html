@@ -24,66 +24,78 @@
             </nav>
         </div>
     </header>
-    <!-- Hero Section with Video -->
-    <section class="hero">
-        <div class="video-container">
-            <!-- Initial Video will be loaded here -->
-        </div>
-    </section>
         <!-- Introduction Section -->
-    <section class="intro" data-aos="fade-up">
-        <p>I'm an aspiring Software Engineer and Data Scientist with a passion for solving complex problems. Explore my work and discover how I can contribute to your team.</p>
-        <div class="intro-buttons">
-            <button class="arrow-btn left-arrow" onclick="changeVideo(-1)" aria-label="Previous Video">&#8592;</button> <!-- Left Arrow -->
-            <button class="arrow-btn right-arrow" onclick="changeVideo(1)" aria-label="Next Video">&#8594;</button> <!-- Right Arrow -->
-        </div>
-    </section>
-   
-    <script>
-        const videos = [
-            'video1.mp4',
-            'video2.mp4',
-            'video3.mp4',
-            'video4.mp4',
-            'video5.mp4'
-        ];
-
-        let currentVideoIndex = 0;
-
-        function changeVideo(direction) {
-            currentVideoIndex += direction; // Update the current index based on direction
-            if (currentVideoIndex < 0) {
-                currentVideoIndex = videos.length - 1; // Go to last video if at the start
-            } else if (currentVideoIndex >= videos.length) {
-                currentVideoIndex = 0; // Go to first video if at the end
+        <section class="intro" data-aos="fade-up">
+            <p>I'm an aspiring Software Engineer and Data Scientist with a passion for solving complex problems. Explore my work and discover how I can contribute to your team.I'm an aspiring Software Engineer and Data Scientist with a passion for solving complex problems. Explore my work and discover how I can contribute to your team.</p>
+        </section>
+        
+        <section class="hero">
+            <div class="video-container"></div>
+            <div class="video-indicators"></div>
+        </section>
+        
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        
+            const videos = [
+                'C:/Users/Akash/OneDrive/Desktop/New_folder/1st.mp4',
+                'C:/Users/Akash/OneDrive/Desktop/New_folder/2nd.mp4',
+                'C:/Users/Akash/OneDrive/Desktop/New_folder/3rd.mp4',
+                'C:/Users/Akash/OneDrive/Desktop/New_folder/4th.mp4',
+                'C:/Users/Akash/OneDrive/Desktop/New_folder/5th.mp4'
+            ];
+        
+            let currentVideoIndex = 0;
+            let videoTimer;
+        
+            function changeVideo(index) {
+                currentVideoIndex = index;
+        
+                const videoContainer = document.querySelector('.video-container');
+                videoContainer.innerHTML = `
+                    <video width="100%" height="100%" autoplay muted>
+                        <source src="${videos[currentVideoIndex]}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>`;
+        
+                updateIndicators();
+        
+                clearTimeout(videoTimer);
+                videoTimer = setTimeout(() => {
+                    currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+                    changeVideo(currentVideoIndex);
+                }, 5000);
             }
-
-            const videoContainer = document.querySelector('.video-container');
-            videoContainer.innerHTML = `<video width="100%" height="100%" controls>
-                                            <source src="${videos[currentVideoIndex]}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>`;
-        }
-
-        // Initialize the first video when the page loads
-        window.onload = () => changeVideo(0);
-
-        // Smooth scroll behavior for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        
+            function createIndicators() {
+                const indicatorContainer = document.querySelector('.video-indicators');
+                videos.forEach((video, index) => {
+                    const indicator = document.createElement('div');
+                    indicator.classList.add('indicator');
+                    if (index === 0) indicator.classList.add('active');
+                    indicator.addEventListener('click', () => changeVideo(index));
+                    indicatorContainer.appendChild(indicator);
                 });
-            });
-        });
-
-        // Initialize AOS (Animate on Scroll)
-        AOS.init();
-    </script>
-    
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+            }
+        
+            function updateIndicators() {
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((indicator, index) => {
+                    if (index === currentVideoIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+        
+            window.onload = () => {
+                createIndicators();
+                changeVideo(0);
+            };
+        </script>
+        
 
    <!-- About Section -->
 <section class="about" data-aos="fade-up" id="about">
@@ -270,26 +282,36 @@
         
 
         <!-- View All Button -->
-        <button class="view-all-btn" id="viewAllBtn">View All</button>
+        <button class="view-all-btn" id="viewAllBtn">View More</button>
     </div>
 </section>
 
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Get the 'View All' button and hidden project cards
         const viewAllBtn = document.getElementById("viewAllBtn");
         const hiddenProjects = document.querySelectorAll(".project-card.hidden");
+        let isExpanded = false; // Track the state of the button
 
-        // Event listener for the button
         viewAllBtn.addEventListener("click", function () {
-            hiddenProjects.forEach(project => {
-                project.classList.remove("hidden");  // Show hidden projects
-            });
-            viewAllBtn.style.display = "none"; // Hide the 'View All' button
+            if (!isExpanded) {
+                // Show hidden projects
+                hiddenProjects.forEach(project => {
+                    project.classList.remove("hidden");
+                });
+                viewAllBtn.textContent = "View Less"; // Change button text
+            } else {
+                // Hide projects again
+                hiddenProjects.forEach(project => {
+                    project.classList.add("hidden");
+                });
+                viewAllBtn.textContent = "View More"; // Change button text back
+            }
+            isExpanded = !isExpanded; // Toggle the state
         });
     });
 </script>
+
 <!-- Certifications Section -->
 <section class="certifications" id="certifications">
     <div class="certifications-container">
