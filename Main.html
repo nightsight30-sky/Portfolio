@@ -15,25 +15,26 @@
         <h1 class="navbar-title">Welcome</h1> <!-- Title instead of logo -->
         <div class="navbar-container">
             <nav class="nav-links"> <!-- Navigation links -->
-                <a href="#about">About Me</a>
+                <a href="#intro">About Me</a>
                 <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
                 <a href="#certifications">Certifications</a>
-                <a href="#achievements">Academic Achievements</a>
                 <a href="#contacts">Contacts</a>
             </nav>
         </div>
     </header>
         <!-- Introduction Section -->
-        <section class="intro" data-aos="fade-up">
-            <p>I'm an aspiring Software Engineer and Data Scientist with a passion for solving complex problems. Explore my work and discover how I can contribute to your team.I'm an aspiring Software Engineer and Data Scientist with a passion for solving complex problems. Explore my work and discover how I can contribute to your team.</p>
+        <section class="intro" data-aos="fade-up" id="intro">
+            <p>I'm an aspiring Software Engineer and Data Scientist with a passion for solving complex problems.</p>
         </section>
         
-        <section class="hero">
+        <section class="hero"  id="hero">
+
             <div class="video-container"></div>
             <div class="video-indicators"></div>
         </section>
-        
+
         <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
         <script>
             AOS.init();
@@ -95,25 +96,23 @@
                 changeVideo(0);
             };
         </script>
-        
-
-   <!-- About Section -->
+       <!-- About Section -->
 <section class="about" data-aos="fade-up" id="about">
-    <div class="about-container">
-        <div class="about-text">
-            <h2>Meet an Aspiring Software Engineer & Data Scientist Ready to Innovate</h2>
-            <p>I hold a B.Tech in Computer Science with minors in Data Science and DevOps. My career focus is on leveraging technology to solve complex problems and drive impactful solutions.</p>
-        </div>
-        <div class="about-image">
-            <img src="path_to_your_resume_image" alt="Resume Image" class="full-length-image">
-            <!-- Download button directly below the image -->
-            <div class="download-buttons">
-                <a href="path_to_your_resume_image" download="resume_full_length.jpg" class="download-btn">Download Image</a>
-            </div>
+    <!--resume-->
+<div class="about-container">
+    <div class="about-text">
+        <h2>Meet an Aspiring Software Engineer & Data Scientist Ready to Innovate</h2>
+        <p>I hold a B.Tech in Computer Science with minors in Data Science and DevOps. My career focus is on leveraging technology to solve complex problems and drive impactful solutions.</p>
+    </div>
+    <div class="about-image">
+        <img src="C:/Users/Akash/OneDrive/Desktop/New_folder/rm.jpg" alt="Resume Image" class="full-length-image">
+        <!-- Download button directly below the image -->
+        <div class="download-buttons">
+            <a href="path_to_your_resume_image" download="resume_full_length.jpg" class="download-btn">Download Image</a>
         </div>
     </div>
+</div>
 </section>
-
 
     <div class="expertise-section">
         <h3>Explore My Expertise in Software Engineering, Data Science, and More</h3>
@@ -311,10 +310,53 @@
         });
     });
 </script>
+<!--Exprience-->
+<section class="experience" id="experience">
+    <div class="experience-content">
+        <div class="experience-text">
+            <h3>Experience</h3>
+            <h2>My Front-End Development Internship Journey</h2>
+            <p>Gained hands-on experience in developing responsive web applications using modern frameworks and technologies.</p>
+            <a href="#" class="btn">Learn More</a>
+            <a href="#" class="view-link">View &#x2192;</a>
+        </div>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <div class="icon"><img src="icon.png" alt="icon"></div>
+                <div class="details">
+                    <h4>Internship Role</h4>
+                    <p>Gained hands-on experience in developing responsive web applications using modern frameworks and technologies.</p>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="icon"><img src="icon.png" alt="icon"></div>
+                <div class="details">
+                    <h4>Key Projects</h4>
+                    <p>Contributed to multiple projects that enhanced user experience and interface design.</p>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="icon"><img src="icon.png" alt="icon"></div>
+                <div class="details">
+                    <h4>Skills Developed</h4>
+                    <p>Improved my coding skills, teamwork, and problem-solving abilities in a fast-paced environment.</p>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="icon"><img src="icon.png" alt="icon"></div>
+                <div class="details">
+                    <h4>Achievements</h4>
+                    <p>Recognized for outstanding contributions and innovative solutions during my internship tenure.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Certifications Section -->
 <section class="certifications" id="certifications">
     <div class="certifications-container">
+        <h3>Certifications</h3>
         <h2>Certifications That Showcase My Commitment to Continuous Learning and Growth</h2>
         <div class="certification-cards">
             <!-- First 5 certificates (visible by default) -->
